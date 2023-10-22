@@ -1,3 +1,4 @@
+//Pecthgamon Sangnual 6410406819
 package ku.shop;
 
 import io.cucumber.java.en.Given;
@@ -27,10 +28,14 @@ public class BuyStepdefs {
         Product prod = catalog.getProduct(name);
         order.addItem(prod, quantity);
     }
-
     @Then("total should be {float}")
     public void total_should_be(double total) {
         assertEquals(total, order.getTotal());
+    }
+    @Then("{string} remain is {int}")
+    public void stock_remain(String name, int remain){
+        Product prod = catalog.getProduct(name);
+        assertEquals(remain,prod.getStock());
     }
 }
 
